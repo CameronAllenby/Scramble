@@ -1,7 +1,9 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using System.Collections;
+using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] private InputActionReference action;
     [SerializeField] private float speed;
 
+    public ScriptObject data;
     // Projectiles
     public GameObject lazer;
     public GameObject bomb;
@@ -17,9 +20,15 @@ public class Player : MonoBehaviour
     public Vector3 spawn;
 
     public int point;
+
+    SoundManager soundManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+       
+        // finds the current sound manager in the scene
+        soundManager = GameObject.FindWithTag("Audio").GetComponent<SoundManager>();
+        data.currentFuel = data.maxFuel;
         StartCoroutine("Points");
     }
 
@@ -49,6 +58,7 @@ public class Player : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
             point = point + 10;
+            data.currentFuel--;
             Debug.Log(point);
             yield return null;
         }

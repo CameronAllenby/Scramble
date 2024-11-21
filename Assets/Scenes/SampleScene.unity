@@ -286,10 +286,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   action: {fileID: 8672730637581411837, guid: c3b9f2b558059d546b43292b0e12109b, type: 3}
   speed: 10
+  data: {fileID: 0}
   lazer: {fileID: 6634991378757254027, guid: a8f507352cb4227429ee3baafdd96dfc, type: 3}
   bomb: {fileID: 7795804238589307811, guid: c1be0161ce37bae418c7c728a52533bc, type: 3}
   projSpawn: {fileID: 1002981802}
   spawn: {x: 0, y: 0, z: 0}
+  point: 0
 --- !u!114 &355691712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -688,7 +690,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -0.13099957}
+  m_AnchoredPosition: {x: 0, y: -0.1309967}
   m_SizeDelta: {x: 0, y: -4.4538}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &976763841
@@ -704,7 +706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.40945286, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1218,6 +1220,7 @@ GameObject:
   - component: {fileID: 1804128792}
   - component: {fileID: 1804128794}
   - component: {fileID: 1804128793}
+  - component: {fileID: 1804128795}
   m_Layer: 5
   m_Name: Bar
   m_TagString: Untagged
@@ -1241,9 +1244,9 @@ RectTransform:
   - {fileID: 1709920700}
   m_Father: {fileID: 1878209761}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -46.2, y: -158.05576}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -46.2, y: 26.944214}
   m_SizeDelta: {x: 403.8585, y: 22.4673}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1804128793
@@ -1324,6 +1327,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1804128795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804128791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fabd36dc8bccc7b49abd003312b8e2b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuel: {fileID: 1804128793}
 --- !u!1 &1878209757
 GameObject:
   m_ObjectHideFlags: 0
