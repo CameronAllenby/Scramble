@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
@@ -14,10 +15,12 @@ public class Player : MonoBehaviour
     // Where the projectiles spawn from
     public Transform projSpawn;
     public Vector3 spawn;
+
+    public int point;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        StartCoroutine("Points");
     }
 
     // Update is called once per frame
@@ -29,14 +32,26 @@ public class Player : MonoBehaviour
         // moves the player
         transform.Translate(moveDirect * speed * Time.deltaTime);
     }
-
+    //spawn bomb
     public void BombLaunch()
     {
         Instantiate(bomb, spawn, Quaternion.identity);
     }
-
+    //
     public void FireLazer()
     {
         Instantiate(lazer, spawn, Quaternion.identity);
+        
+    }
+    IEnumerator Points()
+    {
+        while (true) 
+        {
+            yield return new WaitForSeconds(1);
+            point = point + 10;
+            Debug.Log(point);
+            yield return null;
+        }
+        
     }
 }

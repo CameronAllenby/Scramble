@@ -6,8 +6,9 @@ public class Bomb : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
 
+        rb = GetComponent<Rigidbody2D>();
+        // gives movement to the bomb
         rb.AddForce(new Vector2(100, 50));
     }
 
