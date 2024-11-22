@@ -28,7 +28,6 @@ public class Player : MonoBehaviour
        
         // finds the current sound manager in the scene
         soundManager = GameObject.FindWithTag("Audio").GetComponent<SoundManager>();
-        data.currentFuel = data.maxFuel;
         StartCoroutine("Points");
     }
 

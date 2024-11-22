@@ -5,10 +5,10 @@ public class FuelBar : MonoBehaviour
 {
     public Slider fuel;
     ScriptObject sc;
-    public void SetMaxFuel(int Fuel)
+    public void SetMaxFuel()
     {
-        fuel.maxValue = Fuel;
-        fuel.value = Fuel;
+        fuel.maxValue = sc.maxFuel;
+        
     }
     public void SetFuel()
     {

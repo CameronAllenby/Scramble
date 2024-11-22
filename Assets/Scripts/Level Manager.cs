@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+   
     public static LevelManager Instance;
     // keeps the sound manager in the scene
     private void Awake()
