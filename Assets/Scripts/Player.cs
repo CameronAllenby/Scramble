@@ -22,10 +22,17 @@ public class Player : MonoBehaviour
     public int point;
 
     SoundManager soundManager;
+    public FuelBar fuelBar;
+
+    public int currentFuel;
+    public int maxFuel = 100;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       
+        
+        //sets fuel
+        currentFuel = maxFuel;
+        fuelBar.SetMaxFuel(maxFuel);
         // finds the current sound manager in the scene
         soundManager = GameObject.FindWithTag("Audio").GetComponent<SoundManager>();
         StartCoroutine("Points");
@@ -56,8 +63,9 @@ public class Player : MonoBehaviour
         while (true) 
         {
             yield return new WaitForSeconds(1);
-            point = point + 10;
-            data.currentFuel--;
+            point += 10;
+            currentFuel-= 2;
+            fuelBar.SetFuel(currentFuel);
             Debug.Log(point);
             yield return null;
         }
