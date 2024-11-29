@@ -1,9 +1,6 @@
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using System.Collections;
-using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
@@ -26,21 +23,29 @@ public class Player : MonoBehaviour
 
     public int currentFuel;
     public int maxFuel = 100;
+    public int lives;
+
+    public GameObject camera;
+    public GameObject playerSpawn;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        //sets lives
+
         //sets fuel
         currentFuel = maxFuel;
         fuelBar.SetMaxFuel(maxFuel);
         // finds the current sound manager in the scene
         soundManager = GameObject.FindWithTag("Audio").GetComponent<SoundManager>();
+        camera = GameObject.FindWithTag("MainCamera");
+        playerSpawn = GameObject.FindWithTag("SpawnPoint");
         StartCoroutine("Points");
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (currentFuel > maxFuel) { currentFuel = 100; }
         spawn = new Vector3(projSpawn.position.x, projSpawn.position.y);
         // getting the joystick output
         Vector2 moveDirect = action.action.ReadValue<Vector2>();
@@ -57,6 +62,13 @@ public class Player : MonoBehaviour
     {
         Instantiate(lazer, spawn, Quaternion.identity);
         
+    }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("enemy") || collision.CompareTag("floor"))
+        {
+            camera.transform.position = playerSpawn.transform.position;
+        }
     }
     IEnumerator Points()
     {
