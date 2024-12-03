@@ -4,7 +4,9 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     SoundManager soundManager;
-    public static LevelManager Instance;
+    private static LevelManager Instance;
+    int lives = 2;
+    public int point;
     // keeps the level manager in the scene
     private void Awake()
     {
@@ -46,5 +48,20 @@ public class LevelManager : MonoBehaviour
     public void Quit() 
     {
         Application.Quit();
+    }
+    public void Death()
+    {
+        if  (lives >= 0)
+        {
+            SceneManager.LoadScene(1);
+            soundManager.PlaySFX("Respawn");
+            lives--;
+        }
+        else
+        {
+            SceneManager.LoadScene(0);
+            soundManager.PlayMusic("Title");
+            lives = 3;
+        }
     }
 }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -16,17 +17,19 @@ public class Player : MonoBehaviour
     public Transform projSpawn;
     public Vector3 spawn;
 
-    public int point;
 
     SoundManager soundManager;
     public FuelBar fuelBar;
 
     public int currentFuel;
     public int maxFuel = 100;
-    public int lives;
+    public int lives = 3;
 
-    public GameObject camera;
+    public GameObject mainCamera;
     public GameObject playerSpawn;
+    public GameObject reaspawn;
+    public GameObject player;
+    public LevelManager levelManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,8 +40,11 @@ public class Player : MonoBehaviour
         fuelBar.SetMaxFuel(maxFuel);
         // finds the current sound manager in the scene
         soundManager = GameObject.FindWithTag("Audio").GetComponent<SoundManager>();
-        camera = GameObject.FindWithTag("MainCamera");
+        levelManager = GameObject.FindWithTag("LevelManager").GetComponent<LevelManager>();
+        mainCamera = GameObject.FindWithTag("MainCamera");
         playerSpawn = GameObject.FindWithTag("SpawnPoint");
+        reaspawn = GameObject.FindWithTag("Respawn");
+        player = GameObject.FindWithTag("Player");
         StartCoroutine("Points");
     }
 
@@ -51,6 +57,10 @@ public class Player : MonoBehaviour
         Vector2 moveDirect = action.action.ReadValue<Vector2>();
         // moves the player
         transform.Translate(moveDirect * speed * Time.deltaTime);
+        if (currentFuel == 0)
+        {
+            levelManager.Death();
+        }
     }
     //spawn bomb
     public void BombLaunch()
@@ -65,20 +75,21 @@ public class Player : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("enemy") || collision.CompareTag("floor"))
+        if (collision.CompareTag("Enemy") || collision.CompareTag("Floor"))
         {
-            camera.transform.position = playerSpawn.transform.position;
+            levelManager.Death();
         }
     }
+
     IEnumerator Points()
     {
         while (true) 
         {
             yield return new WaitForSeconds(1);
-            point += 10;
+            levelManager.point += 10;
             currentFuel-= 2;
             fuelBar.SetFuel(currentFuel);
-            Debug.Log(point);
+            Debug.Log(levelManager.point);
             yield return null;
         }
         

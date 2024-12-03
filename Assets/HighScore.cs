@@ -19,10 +19,10 @@ public class HighScore : MonoBehaviour
         if (int.TryParse(highScore, out highNumb))
         {
             Debug.Log(highNumb);
-            if (player.point >= highNumb)
+            if (player.levelManager.point >= highNumb)
             {
-                highScore = player.point.ToString();
-                UI.text = "HI: " + player.point.ToString();
+                highScore = player.levelManager.point.ToString();
+                UI.text = "HI: " + player.levelManager.point.ToString();
                 PlayerPrefs.SetString("highscore", highScore);
             }
             

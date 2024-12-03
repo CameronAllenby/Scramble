@@ -3,9 +3,13 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour
 {
     public TMPro.TextMeshProUGUI UI;
-    public Player player;
+    LevelManager levelManager;
+    private void Start()
+    {
+        levelManager = GameObject.FindWithTag("LevelManager").GetComponent<LevelManager>();
+    }
     void Update()
     {
-        UI.text = "SCORE: " + player.point.ToString();
+        UI.text = "SCORE: " + levelManager.point.ToString();
     }
 }

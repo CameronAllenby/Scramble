@@ -9,6 +9,7 @@ TagManager:
   - Audio
   - SpawnPoint
   - Enemy
+  - LevelManager
   layers:
   - Default
   - TransparentFX
