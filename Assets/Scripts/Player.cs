@@ -89,7 +89,6 @@ public class Player : MonoBehaviour
             levelManager.point += 10;
             currentFuel-= 2;
             fuelBar.SetFuel(currentFuel);
-            Debug.Log(levelManager.point);
             yield return null;
         }
         

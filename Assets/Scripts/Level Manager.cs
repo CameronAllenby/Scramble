@@ -61,7 +61,7 @@ public class LevelManager : MonoBehaviour
         {
             SceneManager.LoadScene(0);
             soundManager.PlayMusic("Title");
-            lives = 3;
+            lives = 2;
         }
     }
 }

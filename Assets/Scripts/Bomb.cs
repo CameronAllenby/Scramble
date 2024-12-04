@@ -14,25 +14,7 @@ public class Bomb : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Projectle"))
-        {
-            if (Missile.flight == false)
-            {
-                Missile.player.levelManager.point += 50;
-            }
-            if (Missile.flight == true)
-            {
-                Missile.player.levelManager.point += 80;
-                Debug.Log("80 Points");
-            }
-            Destroy(gameObject);
-        }
-
-        if (col.CompareTag("Player"))
-        {
-            StartCoroutine("Launch");
-        }
-        if (col.CompareTag("Floor"))
+        if (col.CompareTag("Floor") || col.CompareTag("Enemy"))
         {
             Destroy(gameObject);
         }
