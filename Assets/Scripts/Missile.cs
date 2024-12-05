@@ -1,18 +1,15 @@
 using UnityEngine;
-using System.Collections;
-using UnityEditorInternal;
+
 public class Missile : MonoBehaviour
 {
     public Player player;
     public bool flight = false;
-    int random;
 
-    SoundManager soundManager;
 
     private void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<Player>();
-        soundManager = GameObject.FindWithTag("Audio").GetComponent<SoundManager>();
+        
     }
 
     private void OnTriggerEnter2D(Collider2D col)

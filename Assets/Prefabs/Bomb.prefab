@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 3367519069004759513}
+  Missile: {fileID: 0}
 --- !u!61 &7323027439901426354
 BoxCollider2D:
   m_ObjectHideFlags: 0
