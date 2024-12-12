@@ -31,14 +31,6 @@ public class LevelManager : MonoBehaviour
         soundManager.PlayMusic("MainTheme");
     }
 
-    public void SecondLevel() 
-    { 
-    }
-
-    public void ThirdLevel() 
-    {
-    }
-
     public void MainMenu()
     {
         SceneManager.LoadScene(0);

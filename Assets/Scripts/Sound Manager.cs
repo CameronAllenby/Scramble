@@ -62,13 +62,6 @@ public class SoundManager : MonoBehaviour
             sfxSource.PlayOneShot(s.clip);
         }
     }
-
-    public void PlayBottonSound()
-    {
-        print("ee3");
-        PlaySFX("SFX");
-    }
-
     public void MusicVolume(float volume)
     {
         musicSource.volume = volume;
@@ -80,10 +73,4 @@ public class SoundManager : MonoBehaviour
         sfxSource.volume = volume;
     }
 
-    public void MasterVolume(float volume)
-    {
-        masterSource.volume = volume;
-        sfxSource.volume = volume;
-        musicSource.volume = volume;
-    }
 }
